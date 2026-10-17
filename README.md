@@ -4,41 +4,32 @@ Landing page for **Sukcyna**, a fictional Polish cosmetics brand built around Ba
 
 > The brand is invented for this project. It is not a real company and does not sell anything.
 
+**Live:** https://marven151.github.io/sukcyna/
+
 ## What's here
 
 Single static page, no build step, no dependencies. Open `index.html` in a browser.
 
-- **Hero** — an amber nugget drawn in SVG. The internal light source follows the pointer and drifts on its own when idle. Sun spangles and a fossil sprig are rendered inside the stone.
-- **Deposit strip** — material, resin age, succinic acid content, catalogue size.
-- **Catalogue** — three products numbered like museum specimens (`SK/01`–`SK/03`).
-- **Formula** — full ingredient list for `SK/01` with percentages.
+- **Hero** — an amber nugget drawn in SVG. The internal light follows the pointer and drifts on its own when idle. A small square of real amber photographs crossfades beside it.
+- **Złoże** — where the amber comes from, with three figures from the deposit.
+- **Produkty** — three products. A sticky photograph of the raw material changes with the row you hover, focus or click.
+- **Skład** — the full ingredient list of the oil, six items adding up to 100%.
+- **Footer** — the workshop, set over a photograph of Gdańsk.
 
 ## Design notes
 
-Committed single-theme dark palette: cold Baltic water as the ground, amber as the only light source. Amber only reads as amber in the dark, so there is no light variant.
+One dark field from top to bottom with amber as the only light. Single typeface: Clash Grotesk (Fontshare).
 
 | Role | Value |
 | --- | --- |
 | Ground | `#0A1417` |
-| Raised surface | `#101F24` |
-| Border | `#1D3238` |
+| Surface | `#101F24` |
+| Text | `#E8E6E0` |
+| Muted text | `#9AADB3` |
 | Amber accent | `#E08B2C` |
-| Amber highlight | `#F5C978` |
-| Text | `#EAE3D5` |
-| Muted text | `#7E949B` |
 
-Typefaces: Newsreader (display), Archivo (body), IBM Plex Mono (labels and data), all from Google Fonts.
+Respects `prefers-reduced-motion`.
 
-Accessibility: keyboard focus is visible, `prefers-reduced-motion` disables the drift animation and scroll reveals, and the layout reflows down to 360px.
+## Picture credits
 
-## Local preview
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open http://localhost:8000.
-
-## Deploying to GitHub Pages
-
-Settings → Pages → Build and deployment → Deploy from a branch → `main` / `/ (root)`.
+Photographs from Wikimedia Commons: Brocken Inaglory (CC BY-SA 3.0), James St. John (CC BY 2.0), GraceKelly (CC BY-SA 3.0), Ra'ike / Lanzi (CC BY-SA 3.0), Gerda Arendt (CC0). Linked in the page footer.

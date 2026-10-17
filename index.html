@@ -1,442 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Sukcyna — kosmetyki na bazie kwasu bursztynowego z bałtyckiego sukcynitu. Marka fikcyjna, projekt demonstracyjny.">
-<title>Sukcyna</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap">
-
+<title>Sukcyna — kosmetyki z bałtyckiego bursztynu</title>
+<meta name="description" content="Trzy kosmetyki na bazie kwasu bursztynowego z bałtyckiego sukcynitu. Zbierane na mierzei, mielone na zimno, z pełną listą składu. Marka fikcyjna, projekt demonstracyjny.">
+<meta property="og:title" content="Sukcyna — światło zamknięte w żywicy">
+<meta property="og:description" content="Trzy kosmetyki z bałtyckiego sukcynitu. Pełny skład na stronie.">
+<meta property="og:image" content="https://marven151.github.io/sukcyna/img/amber-bernstein-4-stones.jpg">
+<meta name="theme-color" content="#0a1417">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a1417'/%3E%3Cpath d='M16 4c6 1 11 6 12 12s-3 12-9 12-12-5-12-12S10 3 16 4z' fill='%23e08b2c'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet">
 <style>
-  /* Marka fikcyjna. Świat wizualny: bałtycki bursztyn oglądany pod światło —
-     zimna toń morza jako tło, ciepła żywica jako jedyne źródło światła.
-     Projekt celowo jednomotywowy (tylko ciemny), bo bursztyn świeci wyłącznie w mroku. */
-  :root {
-    --ton:      #0A1417;
-    --glebia:   #101F24;
-    --krawedz:  #1D3238;
-    --bursztyn: #E08B2C;
-    --miod:     #F5C978;
-    --piasek:   #EAE3D5;
-    --mgla:     #7E949B;
+:root{
+  --bg:#0a1417; --surface:#101f24; --ink:#e8e6e0; --muted:#9aadb3; --accent:#e08b2c; --accent-ink:#0a1417;
+  --m:clamp(20px,2.4vw,36px); --gap:16px;
+  --step-small:clamp(.8125rem,.79rem + .1vw,.875rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --font:'Clash Grotesk',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--step-body)/1.6 var(--font);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,dl,dd,figure{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:var(--accent);color:var(--accent-ink)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:10px 16px;z-index:100}
+.skip:focus{left:8px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:500;font-size:15px;transition:background .2s}
+.btn:hover{background:var(--accent)}
 
-    --f-display: "Newsreader", "Iowan Old Style", Georgia, serif;
-    --f-body:    "Archivo", "Helvetica Neue", Arial, sans-serif;
-    --f-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+/* hero */
+.hero{position:relative;min-height:max(100svh,720px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gap);padding:0 var(--m);overflow:hidden}
+.bar{position:absolute;z-index:3;top:0;left:var(--m);right:var(--m);height:76px;display:flex;align-items:center;justify-content:space-between;font-size:15px}
+.bar nav{display:flex;gap:28px;align-items:center}
+.bar .mark{font-weight:500;text-decoration:none;margin-right:12px}
+.bar nav a:not(.mark){text-decoration:none;color:var(--muted)}
+.bar nav a:not(.mark):hover{color:var(--ink)}
+.okaz{grid-column:6/10;margin-top:14svh;align-self:start;aspect-ratio:4/5;cursor:crosshair}
+.okaz svg{width:100%;height:100%;display:block}
+.small{position:absolute;left:calc(var(--m) + (100% - var(--m) * 2) * 1.1 / 12);top:52%;width:calc((100% - var(--m) * 2) * 1 / 8.2);aspect-ratio:1;overflow:hidden;filter:brightness(.7)}
+.small img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.small img:first-child{opacity:1}
+.hero h1{position:absolute;left:var(--m);bottom:36px;font-weight:400;font-size:clamp(2.25rem,5.4vw,5.5rem);letter-spacing:-.04em;line-height:1}
+.hero .lede{position:absolute;right:var(--m);bottom:36px;width:calc((100% - var(--m) * 2) * 3 / 12 - 8px);max-width:24ch;font-size:16px;color:var(--muted);line-height:1.45}
 
-    --gutter: clamp(1.25rem, 4vw, 3.5rem);
-    --maxw: 1180px;
-    color-scheme: dark;
-  }
+/* about */
+.zloze{padding:clamp(120px,12vw,200px) var(--m);display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gap)}
+.facts{grid-column:1/3;font-size:14px;color:var(--muted);display:grid;gap:22px;align-content:start}
+.facts b{display:block;font-weight:500;color:var(--ink);font-size:15px}
+.zloze .big{grid-column:3/13;font-size:clamp(1.5rem,2.5vw,2.375rem);line-height:1.2;letter-spacing:-.015em;color:var(--muted)}
+.zloze .big strong{font-weight:400;color:var(--ink)}
+.zloze .body{grid-column:3/9;margin-top:40px;color:var(--muted);font-size:17px;max-width:52ch}
+.zloze .big img{float:left;width:3.6em;height:3.6em;object-fit:cover;margin:.12em .5em 0 0;filter:brightness(.9)}
 
-  * { box-sizing: border-box; }
+/* products */
+.produkty{padding:clamp(96px,10vw,160px) var(--m)}
+.produkty>h2{font-weight:400;font-size:clamp(2rem,3.4vw,3rem);letter-spacing:-.03em;line-height:1;margin:0 0 48px calc((100% + var(--gap)) * 6 / 12)}
+.split{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gap)}
+.stage{grid-column:1/6;position:sticky;top:12vh;align-self:start;width:34vw;aspect-ratio:4/5;overflow:hidden;background:var(--surface)}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease;filter:brightness(.9)}
+.stage img.on{opacity:1}
+.stage figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-size:14px;background:rgba(10,20,23,.72)}
+.plist{grid-column:7/12}
+.row{display:block;width:100%;border:0}
+.row .head{display:flex;justify-content:space-between;align-items:baseline;min-height:58px;font-size:clamp(1.25rem,1.6vw,1.5rem);color:var(--muted);transition:color .2s;gap:16px}
+.row .head .p{font-size:15px;white-space:nowrap}
+.row[aria-expanded=true] .head,.row:hover .head,.row:focus-visible .head{color:var(--ink)}
+.row .desc{display:none;max-width:34ch;font-size:15px;color:var(--muted);padding-bottom:22px}
+.row[aria-expanded=true] .desc{display:block}
+.row .desc em{display:block;font-style:normal;margin-top:10px;color:var(--ink)}
 
-  body {
-    margin: 0;
-    background: var(--ton);
-    color: var(--piasek);
-    font-family: var(--f-body);
-    font-size: 1.0625rem;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
+/* composition */
+.sklad{padding:clamp(96px,10vw,160px) var(--m);display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gap)}
+.sklad .hd{grid-column:1/4}
+.sklad h2{font-weight:400;font-size:clamp(2rem,3.4vw,3rem);letter-spacing:-.03em;line-height:1}
+.sklad .hd p{margin-top:20px;max-width:30ch;font-size:16px;color:var(--muted)}
+.sklad .hd img{width:100%;max-width:240px;aspect-ratio:4/5;object-fit:cover;margin-top:36px;filter:brightness(.8)}
+.sklad .cols{grid-column:5/13;display:grid;grid-template-columns:1fr 1fr;gap:0 64px;align-content:start}
+.sklad h3{font-weight:500;font-size:24px;margin:48px 0 22px}
+.sklad h3:first-child{margin-top:0}
+.it{display:flex;justify-content:space-between;gap:16px;margin-bottom:22px;font-size:19px;font-variant-numeric:tabular-nums}
+.it small{display:block;font-size:16px;color:var(--muted);margin-top:2px}
 
-  ::selection { background: var(--bursztyn); color: #1A0C02; }
+/* footer */
+.foot{position:relative;height:100svh;min-height:680px;overflow:hidden}
+.foot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55)}
+.foot .top{position:absolute;z-index:2;top:32px;left:var(--m);right:var(--m);display:flex;justify-content:space-between;gap:24px;font-size:16px}
+.foot .top div{display:grid;gap:4px;max-width:30ch}
+.foot .top a{text-decoration:none}
+.foot .top a:hover{color:var(--accent)}
+.foot .name{position:absolute;z-index:2;left:var(--m);right:var(--m);bottom:96px;font-size:clamp(4rem,26.5vw,32rem);letter-spacing:-.05em;line-height:.8;font-weight:400;white-space:nowrap}
+.foot .legal{position:absolute;z-index:2;left:var(--m);right:var(--m);bottom:24px;font-size:14px;color:var(--ink);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.foot .legal p{max-width:70ch}
 
-  a { color: inherit; }
+/* motion */
+@media (prefers-reduced-motion:no-preference){
+  .js .hero .bar,.js .hero .okaz,.js .hero h1,.js .hero .lede,.js .hero .small{opacity:0;animation:in 1100ms var(--ease) forwards}
+  .js .hero .okaz{animation-delay:200ms}.js .hero .small{animation-delay:500ms}.js .hero h1{animation-delay:650ms}.js .hero .lede{animation-delay:780ms}.js .hero .bar{animation-delay:100ms}
+  @keyframes in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .small img{animation:xfade 21s infinite}
+  .small img:nth-child(2){animation-delay:7s}.small img:nth-child(3){animation-delay:14s}.small img:first-child{opacity:0}
+  @keyframes xfade{0%{opacity:0}8%{opacity:1}33%{opacity:1}41%{opacity:0}100%{opacity:0}}
+  .js [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity 800ms var(--ease),transform 1000ms var(--ease);transition-delay:calc(var(--d,0) * 80ms)}
+  .js [data-reveal].is-in{opacity:1;transform:none}
+}
 
-  :focus-visible {
-    outline: 2px solid var(--miod);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-
-  .wrap {
-    max-width: var(--maxw);
-    margin-inline: auto;
-    padding-inline: var(--gutter);
-  }
-
-  /* ---------- typografia ---------- */
-  .label {
-    font-family: var(--f-mono);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--mgla);
-    margin: 0;
-  }
-  .label .dot { color: var(--bursztyn); }
-
-  h1, h2, h3 {
-    font-family: var(--f-display);
-    font-weight: 400;
-    text-wrap: balance;
-    margin: 0;
-  }
-  h1 {
-    font-size: clamp(2.9rem, 7.2vw, 5.6rem);
-    line-height: 0.96;
-    letter-spacing: -0.025em;
-  }
-  h1 em {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--miod);
-  }
-  h2 {
-    font-size: clamp(1.9rem, 3.6vw, 3rem);
-    line-height: 1.06;
-    letter-spacing: -0.02em;
-  }
-  h3 {
-    font-size: 1.5rem;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-  p { margin: 0; }
-  .lede {
-    font-size: clamp(1.0625rem, 1.5vw, 1.2rem);
-    color: #C6CCC7;
-    max-width: 46ch;
-  }
-  .prose { max-width: 60ch; color: #BEC7C5; }
-
-  /* ---------- nawigacja ---------- */
-  header.bar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: color-mix(in srgb, var(--ton) 88%, transparent);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--krawedz);
-  }
-  .bar-in {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding-block: 1.1rem;
-  }
-  .mark {
-    font-family: var(--f-display);
-    font-size: 1.15rem;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  .bar nav {
-    display: flex;
-    gap: clamp(1rem, 3vw, 2.25rem);
-    font-family: var(--f-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .bar nav a {
-    color: var(--mgla);
-    text-decoration: none;
-    transition: color .25s;
-  }
-  .bar nav a:hover { color: var(--miod); }
-
-  /* ---------- hero ---------- */
-  .hero {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    align-items: center;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    padding-block: clamp(3rem, 8vw, 6.5rem) clamp(3.5rem, 9vw, 7rem);
-  }
-  .hero-copy {
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-  }
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
-  }
-
-  .btn {
-    font-family: var(--f-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 0.85rem 1.4rem;
-    border: 1px solid var(--bursztyn);
-    color: #1A0C02;
-    background: var(--bursztyn);
-    transition: background .25s, color .25s, border-color .25s;
-  }
-  .btn:hover { background: var(--miod); border-color: var(--miod); }
-  .btn.ghost {
-    background: transparent;
-    color: var(--piasek);
-    border-color: var(--krawedz);
-  }
-  .btn.ghost:hover { border-color: var(--miod); color: var(--miod); }
-
-  /* okaz — element sygnaturowy */
-  .okaz {
-    position: relative;
-    aspect-ratio: 42 / 52;
-    width: 100%;
-    max-width: 460px;
-    margin-inline: auto;
-  }
-  .okaz svg { width: 100%; height: 100%; display: block; }
-  .okaz figcaption {
-    position: absolute;
-    left: 0;
-    bottom: -2.6rem;
-    display: flex;
-    gap: 1.25rem;
-    font-family: var(--f-mono);
-    font-size: 0.625rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--mgla);
-  }
-  .okaz figcaption b { color: var(--piasek); font-weight: 500; }
-
-  /* ---------- pasek danych ---------- */
-  .dane {
-    border-block: 1px solid var(--krawedz);
-    background: var(--glebia);
-  }
-  .dane-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--krawedz);
-  }
-  .dane-cell {
-    background: var(--glebia);
-    padding: 1.6rem var(--gutter) 1.7rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .dane-cell .v {
-    font-family: var(--f-display);
-    font-size: 1.45rem;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    font-variant-numeric: tabular-nums;
-  }
-  .dane-cell .v span { color: var(--bursztyn); }
-
-  /* ---------- sekcje ---------- */
-  section { padding-block: clamp(4rem, 9vw, 7.5rem); }
-
-  .sec-head {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
-  }
-  .sec-head.split {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: end;
-  }
-
-  /* karty okazów */
-  .okazy {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--krawedz);
-    border: 1px solid var(--krawedz);
-  }
-  .karta {
-    background: var(--ton);
-    padding: 2.25rem 1.9rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.15rem;
-    transition: background .35s;
-  }
-  .karta:hover { background: var(--glebia); }
-  .karta-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-  .kod {
-    font-family: var(--f-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    color: var(--bursztyn);
-  }
-  .poj {
-    font-family: var(--f-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.1em;
-    color: var(--mgla);
-    font-variant-numeric: tabular-nums;
-  }
-  .karta p { color: #B4BFBD; font-size: 0.98rem; }
-  .karta .cena {
-    margin-top: auto;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--krawedz);
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: var(--f-mono);
-    font-size: 0.8125rem;
-    letter-spacing: 0.06em;
-    font-variant-numeric: tabular-nums;
-  }
-  .karta .cena em {
-    font-style: normal;
-    color: var(--mgla);
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  /* skład */
-  .sklad {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: start;
-  }
-  .lista {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-top: 1px solid var(--krawedz);
-  }
-  .lista li {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1.5rem;
-    padding-block: 1.05rem;
-    border-bottom: 1px solid var(--krawedz);
-  }
-  .lista .nazwa { font-size: 1rem; }
-  .lista .nazwa small {
-    display: block;
-    font-family: var(--f-mono);
-    font-size: 0.625rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--mgla);
-    margin-top: 0.3rem;
-  }
-  .lista .proc {
-    font-family: var(--f-display);
-    font-size: 1.35rem;
-    color: var(--miod);
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-
-  /* stopka */
-  footer {
-    border-top: 1px solid var(--krawedz);
-    background: var(--glebia);
-    padding-block: clamp(3rem, 6vw, 4.5rem) 2.5rem;
-  }
-  .stopka-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: start;
-  }
-  .stopka-grid ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    font-size: 0.9375rem;
-    color: #B4BFBD;
-  }
-  .nota {
-    margin-top: clamp(2.5rem, 5vw, 3.5rem);
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--krawedz);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  /* ujawnianie przy przewijaniu */
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
-  }
-  .reveal.on { opacity: 1; transform: none; }
-
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
-    .okaz { order: -1; max-width: 340px; }
-    .okaz figcaption { position: static; margin-top: 1.25rem; }
-    .dane-grid { grid-template-columns: repeat(2, 1fr); }
-    .okazy { grid-template-columns: 1fr; }
-    .sec-head.split { grid-template-columns: 1fr; align-items: start; }
-    .sklad { grid-template-columns: 1fr; }
-    .stopka-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 560px) {
-    .dane-grid { grid-template-columns: 1fr; }
-    .stopka-grid { grid-template-columns: 1fr; }
-    .bar nav a:nth-child(n+3) { display: none; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    * { animation: none !important; }
-  }
+@media (max-width:900px){
+  .hero{display:flex;flex-direction:column;min-height:0;padding-bottom:0}
+  .hero h1{order:1}.hero .lede{order:2}.okaz{order:3}.small{order:4}
+  .bar{position:relative;left:auto;right:auto}
+  .bar nav a:not(.mark){display:none}
+  .okaz{width:78%;margin:36px 0 0 auto}
+  .small{position:relative;left:auto;top:auto;width:30%;margin:-60px 0 56px;z-index:2}
+  .hero h1{position:static;font-size:11vw;margin-top:28px}
+  .hero .lede{position:static;margin:16px 0 8px;max-width:none;width:auto;font-size:15px}
+  .zloze{display:block}
+  .facts{margin-top:36px;grid-template-columns:repeat(3,1fr);font-size:13px}
+  .zloze .big{font-size:1.375rem;line-height:1.25}
+  .facts{order:2}
+  .produkty>h2{margin-left:0}
+  .split{display:block}
+  .stage{position:sticky;top:0;z-index:3;width:100%;aspect-ratio:auto;height:38svh}
+  .plist{margin-top:32px}
+  .sklad{display:block}
+  .sklad .cols{display:block;margin-top:40px}
+  .sklad h3{font-size:20px;margin-top:40px}
+  .it{font-size:17px}
+  .foot{height:auto;min-height:88svh}
+  .foot .top{flex-direction:column}
+  .foot .name{font-size:26vw;bottom:120px}
+}
 </style>
 </head>
 <body>
-<header class="bar">
-  <div class="wrap bar-in">
-    <a class="mark" href="#gora">Sukcyna</a>
-    <nav>
-      <a href="#zloze">Złoże</a>
-      <a href="#okazy">Produkty</a>
-      <a href="#sklad">Skład</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
+<a class="skip" href="#glowna">Przejdź do treści</a>
+<header class="hero">
+  <div class="bar">
+    <nav aria-label="Główne"><a class="mark" href="#">Sukcyna</a><a href="#zloze">Złoże</a><a href="#produkty">Produkty</a><a href="#sklad">Skład</a></nav>
+    <a class="btn" href="#produkty">Zobacz produkty</a>
   </div>
-</header>
-
-<main id="gora">
-
-  <div class="wrap">
-    <div class="hero">
-      <div class="hero-copy">
-        <p class="label">Bałtyk <span class="dot">·</span> Eocen <span class="dot">·</span> 40 mln lat</p>
-        <h1>Światło<br>zamknięte<br><em>w żywicy.</em></h1>
-        <p class="lede">Trzy kosmetyki na bazie kwasu bursztynowego z bałtyckiego sukcynitu. Zbieramy go na mierzei, przebieramy ręcznie, mielimy na zimno. Nic poza tym.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#okazy">Zobacz produkty</a>
-          <a class="btn ghost" href="#zloze">Skąd bursztyn</a>
-        </div>
-      </div>
-
-      <figure class="okaz" id="okaz">
-        <svg viewBox="0 0 420 520" role="img" aria-label="Bryłka bałtyckiego bursztynu z zatopioną gałązką, oglądana pod światło">
+  <figure class="okaz" id="okaz">
+    <svg viewBox="0 0 420 520" role="img" aria-label="Bryłka bałtyckiego bursztynu z zatopioną gałązką, oglądana pod światło">
           <defs>
             <radialGradient id="rdzen" cx="50%" cy="50%" r="72%" fx="42%" fy="34%">
               <stop offset="0%"   stop-color="#FFF0CB"/>
@@ -502,160 +215,83 @@
 
           <path d="M210 26 C302 32 374 100 390 198 C404 288 372 396 298 464 C244 514 156 510 102 458 C38 396 14 288 30 190 C46 94 120 20 210 26 Z" fill="none" stroke="#FFD79A" stroke-opacity="0.28" stroke-width="1.5"/>
         </svg>
-        <figcaption>
-          <span>Okaz <b>SK/00</b></span>
-          <span>Mierzeja Wiślana</span>
-          <span><b>18,4 g</b></span>
-        </figcaption>
-      </figure>
-    </div>
+  </figure>
+  <div class="small" aria-hidden="true">
+    <img src="img/amber-bernstein-4-stones.jpg" alt="" width="1600" height="961">
+    <img src="img/insects-in-baltic-amber.jpg" alt="" width="1600" height="1200" loading="lazy">
+    <img src="img/amber-resinite-baltics-3.jpg" alt="" width="1600" height="1390" loading="lazy">
   </div>
+  <h1>Światło zamknięte<br>w żywicy.</h1>
+  <p class="lede">Trzy kosmetyki z bałtyckiego sukcynitu. Zbieramy go na mierzei, mielimy na zimno.</p>
+</header>
 
-  <div class="dane">
-    <div class="dane-grid">
-      <div class="dane-cell">
-        <p class="label">Surowiec</p>
-        <p class="v">Sukcynit</p>
-      </div>
-      <div class="dane-cell">
-        <p class="label">Wiek żywicy</p>
-        <p class="v">ok. <span>40</span> mln lat</p>
-      </div>
-      <div class="dane-cell">
-        <p class="label">Kwas bursztynowy</p>
-        <p class="v"><span>3–8%</span> masy</p>
-      </div>
-      <div class="dane-cell">
-        <p class="label">Katalog</p>
-        <p class="v"><span>3</span> produkty</p>
-      </div>
+<main id="glowna">
+  <section class="zloze" id="zloze" aria-label="Złoże">
+    <div class="facts" data-reveal>
+      <p><b>Mierzeja Wiślana</b>okaz 18,4 g</p>
+      <p><b>ok. 40 mln lat</b>wiek żywicy</p>
+      <p><b>3–8% masy</b>kwasu bursztynowego</p>
     </div>
-  </div>
+    <p class="big" data-reveal style="--d:1"><img src="img/palanga-amber-museum-inclusions.jpg" alt="Bursztyn bałtycki z zatopionymi owadami, okaz muzealny" width="1600" height="2133" loading="lazy"><strong>Żywica spłynęła po pniu, morze przyniosła ją tutaj.</strong> Sztormy wyrzucają ją na plażę razem z wodorostami. Przebieramy ręcznie, a okazy z inkluzjami zostają w gablocie, nie w słoiku.</p>
+    <p class="body" data-reveal style="--d:2">Bursztyn bałtycki to zastygła żywica lasów, które rosły tu w eocenie. Reszta po przebraniu idzie na młyn kriogeniczny, bo w temperaturze pokojowej bursztyn się maże, zamiast kruszyć.</p>
+  </section>
 
-  <section id="zloze" class="wrap reveal">
-    <div class="sec-head split">
-      <div style="display:flex;flex-direction:column;gap:1.25rem">
-        <p class="label">Złoże</p>
-        <h2>Żywica spłynęła po pniu, morze przyniosła ją tutaj.</h2>
-      </div>
-      <p class="prose">Bursztyn bałtycki to zastygła żywica lasów, które rosły tu w eocenie. Sztormy wyrzucają go na plażę razem z wodorostami — w tej samej postaci, w jakiej zbierano go tysiące lat temu. Przebieramy ręcznie, odrzucamy okazy z inkluzjami: te zostają w gablocie, nie w słoiku. Reszta idzie na młyn kriogeniczny, bo w temperaturze pokojowej bursztyn się maże, zamiast kruszyć.</p>
+  <section class="produkty" id="produkty" aria-labelledby="h-prod">
+    <h2 id="h-prod" data-reveal>Trzy produkty</h2>
+    <div class="split">
+    <figure class="stage" aria-hidden="true">
+      <img class="on" src="img/amber-resinite-baltics-3.jpg" alt="" width="1600" height="1390">
+      <img src="img/palanga-amber-museum-inclusions.jpg" alt="" width="1600" height="2133" loading="lazy">
+      <img src="img/amber-bernstein-4-stones.jpg" alt="" width="1600" height="961" loading="lazy">
+      <figcaption id="cap">Surowiec: sukcynit z Bałtyku</figcaption>
+    </figure>
+    <div class="plist">
+      <button class="row" type="button" aria-expanded="true" data-i="0" data-cap="Surowiec: sukcynit z Bałtyku" data-reveal><span class="head"><span>Olejek bursztynowy</span><span class="p">30 ml · 189 zł</span></span><span class="desc">Mielony na zimno sukcynit zawieszony w oleju z pestek malin. Wchodzi wolno, zostawia matowy film. Dwie krople na wilgotną twarz, wieczorem.<em>Zbiór III / 2026</em></span></button>
+      <button class="row" type="button" aria-expanded="false" data-i="1" data-cap="Okaz z inkluzjami, zostają w gablocie" data-reveal style="--d:1"><span class="head"><span>Krem barierowy</span><span class="p">50 ml · 149 zł</span></span><span class="desc">Gęsty, na wosku pszczelim i maśle shea. Robiony pod bałtycki wiatr: na policzki, kostki dłoni i wszystko, co zimą schodzi pierwsze.<em>Zbiór II / 2026</em></span></button>
+      <button class="row" type="button" aria-expanded="false" data-i="2" data-cap="Bursztyn z plaży, przed przebraniem" data-reveal style="--d:2"><span class="head"><span>Peeling z piasku</span><span class="p">100 ml · 119 zł</span></span><span class="desc">Płukany piasek z mierzei i okruch bursztynu, związane olejem słonecznikowym. Ziarno grube. Raz w tygodniu, na ciało, nie na twarz.<em>Zbiór I / 2026</em></span></button>
+    </div>
     </div>
   </section>
 
-  <section id="okazy" class="wrap reveal">
-    <div class="sec-head split">
-      <div style="display:flex;flex-direction:column;gap:1.25rem">
-        <p class="label">Katalog</p>
-        <h2>Trzy produkty. Numerujemy je jak okazy.</h2>
-      </div>
-      <p class="prose">Każda partia dostaje numer złoża i datę zbioru — znajdziesz je wybite na spodzie opakowania. Kolejność jest kolejnością powstawania, nie ważności.</p>
+  <section class="sklad" id="sklad" aria-labelledby="h-sklad">
+    <div class="hd" data-reveal>
+      <h2 id="h-sklad">Skład olejku</h2>
+      <p>Nie skracamy składu do „naturalnych ekstraktów”. Jeśli coś jest w butelce, jest na tej liście, w kolejności malejącej zawartości.</p>
+      <img src="img/insects-in-baltic-amber.jpg" alt="Bursztyn bałtycki w różnych odcieniach" width="1600" height="1200" loading="lazy">
     </div>
-
-    <div class="okazy">
-      <article class="karta">
-        <div class="karta-top">
-          <span class="kod">SK/01</span>
-          <span class="poj">30 ml</span>
-        </div>
-        <h3>Olejek bursztynowy</h3>
-        <p>Mielony na zimno sukcynit zawieszony w oleju z pestek malin. Wchodzi wolno, zostawia matowy film. Dwie krople na wilgotną twarz, wieczorem.</p>
-        <p class="cena"><span>189 zł</span><em>Zbiór III / 2026</em></p>
-      </article>
-
-      <article class="karta">
-        <div class="karta-top">
-          <span class="kod">SK/02</span>
-          <span class="poj">50 ml</span>
-        </div>
-        <h3>Krem barierowy</h3>
-        <p>Gęsty, na wosku pszczelim i maśle shea. Robiony pod bałtycki wiatr — na policzki, kostki dłoni i wszystko, co zimą schodzi pierwsze.</p>
-        <p class="cena"><span>149 zł</span><em>Zbiór II / 2026</em></p>
-      </article>
-
-      <article class="karta">
-        <div class="karta-top">
-          <span class="kod">SK/03</span>
-          <span class="poj">100 ml</span>
-        </div>
-        <h3>Peeling z piasku</h3>
-        <p>Płukany piasek z mierzei i okruch bursztynu, związane olejem słonecznikowym. Ziarno grube. Raz w tygodniu, na ciało, nie na twarz.</p>
-        <p class="cena"><span>119 zł</span><em>Zbiór I / 2026</em></p>
-      </article>
+    <div class="cols" data-reveal style="--d:1">
+      <div>
+        <h3>Oleje</h3>
+        <div class="it"><span>Olej z pestek malin<small>Rubus idaeus seed oil</small></span><span>71,0%</span></div>
+        <div class="it"><span>Olej z czarnuszki<small>Nigella sativa seed oil</small></span><span>18,5%</span></div>
+        <h3>Surowiec i emolient</h3>
+        <div class="it"><span>Mielony sukcynit<small>Succinum, frakcja &lt;40 µm</small></span><span>6,0%</span></div>
+        <div class="it"><span>Skwalan z oliwek<small>Squalane</small></span><span>3,0%</span></div>
+      </div>
+      <div>
+        <h3>Dodatki</h3>
+        <div class="it"><span>Witamina E<small>Tocopherol</small></span><span>1,0%</span></div>
+        <div class="it"><span>Olejek sosnowy<small>Pinus sylvestris leaf oil</small></span><span>0,5%</span></div>
+      </div>
     </div>
   </section>
-
-  <section id="sklad" class="wrap reveal">
-    <div class="sklad">
-      <div style="display:flex;flex-direction:column;gap:1.5rem">
-        <p class="label">Skład SK/01</p>
-        <h2>Pełna lista. Osiem pozycji.</h2>
-        <p class="prose">Nie skracamy składu do „naturalnych ekstraktów”. Jeśli coś jest w butelce, jest na tej liście, w kolejności malejącej zawartości.</p>
-      </div>
-
-      <ul class="lista">
-        <li>
-          <span class="nazwa">Olej z pestek malin<small>Rubus idaeus seed oil</small></span>
-          <span class="proc">71,0%</span>
-        </li>
-        <li>
-          <span class="nazwa">Olej z czarnuszki<small>Nigella sativa seed oil</small></span>
-          <span class="proc">18,5%</span>
-        </li>
-        <li>
-          <span class="nazwa">Mielony sukcynit<small>Succinum, frakcja &lt;40 µm</small></span>
-          <span class="proc">6,0%</span>
-        </li>
-        <li>
-          <span class="nazwa">Skwalan z oliwek<small>Squalane</small></span>
-          <span class="proc">3,0%</span>
-        </li>
-        <li>
-          <span class="nazwa">Witamina E<small>Tocopherol</small></span>
-          <span class="proc">1,0%</span>
-        </li>
-        <li>
-          <span class="nazwa">Olejek sosnowy<small>Pinus sylvestris leaf oil</small></span>
-          <span class="proc">0,5%</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
 </main>
 
-<footer id="kontakt">
-  <div class="wrap">
-    <div class="stopka-grid">
-      <div style="display:flex;flex-direction:column;gap:1rem">
-        <span class="mark">Sukcyna</span>
-        <p class="prose" style="max-width:34ch">Pracownia i punkt odbioru. Sklep wysyłkowy otwieramy jesienią 2026.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:1rem">
-        <p class="label">Pracownia</p>
-        <ul>
-          <li>ul. Chmielna 41</li>
-          <li>80-748 Gdańsk</li>
-          <li>czw.–sob., 11:00–18:00</li>
-        </ul>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:1rem">
-        <p class="label">Kontakt</p>
-        <ul>
-          <li>pracownia@sukcyna.example</li>
-          <li>+48 58 000 00 00</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="nota">
-      <p class="label">Marka fikcyjna <span class="dot">·</span> projekt demonstracyjny</p>
-      <p class="label">Gdańsk <span class="dot">·</span> 2026</p>
-    </div>
+<footer class="foot" id="kontakt">
+  <img src="img/old-town-houses-and-port-crane-along.jpg" alt="Motława w Gdańsku wieczorem, żuraw portowy i kamienice" width="1600" height="1200" loading="lazy">
+  <div class="top">
+    <div><span>Pracownia i punkt odbioru</span><span>ul. Chmielna 41, 80-748 Gdańsk</span><span>czw.–sob., 11:00–18:00</span></div>
+    <div><a href="mailto:pracownia@sukcyna.example">pracownia@sukcyna.example</a><a href="tel:+48580000000">+48 58 000 00 00</a><span>Sklep wysyłkowy otwieramy jesienią 2026.</span></div>
+  </div>
+  <p class="name" aria-hidden="true">Sukcyna</p>
+  <div class="legal">
+    <p>Marka fikcyjna, projekt demonstracyjny. Gdańsk 2026.</p>
+    <p>Zdjęcia: <a href="https://commons.wikimedia.org/w/index.php?curid=2588986">Brocken Inaglory</a> (CC BY-SA 3.0), <a href="https://commons.wikimedia.org/w/index.php?curid=97611334">James St. John</a> (CC BY 2.0), <a href="https://commons.wikimedia.org/w/index.php?curid=10886357">GraceKelly</a> (CC BY-SA 3.0), <a href="https://commons.wikimedia.org/w/index.php?curid=1075725">Ra'ike / Lanzi</a> (CC BY-SA 3.0), <a href="https://commons.wikimedia.org/w/index.php?curid=166736693">Gerda Arendt</a> (CC0), Wikimedia Commons.</p>
   </div>
 </footer>
 
 <script>
-  (function () {
+(function () {
     var ruch = window.matchMedia("(prefers-reduced-motion: reduce)");
     var rdzen = document.getElementById("rdzen");
     var refleks = document.getElementById("refleks");
@@ -702,18 +338,14 @@
       requestAnimationFrame(klatka);
     }
     requestAnimationFrame(klatka);
-
-    // ujawnianie sekcji
-    var obs = new IntersectionObserver(function (wpisy) {
-      wpisy.forEach(function (w) {
-        if (w.isIntersecting) {
-          w.target.classList.add("on");
-          obs.unobserve(w.target);
-        }
-      });
-    }, { rootMargin: "0px 0px -12% 0px" });
-    document.querySelectorAll(".reveal").forEach(function (el) { obs.observe(el); });
   })();
+(function(){
+  var els=document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{threshold:.1});els.forEach(function(e){io.observe(e)})}else els.forEach(function(e){e.classList.add('is-in')});
+  var rows=document.querySelectorAll('.row'),imgs=document.querySelectorAll('.stage img'),cap=document.getElementById('cap');
+  function pick(i){rows.forEach(function(r,k){r.setAttribute('aria-expanded',k===i?'true':'false')});imgs.forEach(function(m,k){m.classList.toggle('on',k===i)});cap.textContent=rows[i].dataset.cap}
+  rows.forEach(function(r){var i=+r.dataset.i;r.addEventListener('click',function(){pick(i)});r.addEventListener('mouseenter',function(){pick(i)});r.addEventListener('focus',function(){pick(i)})});
+})();
 </script>
 </body>
 </html>
