@@ -33,3 +33,7 @@ Respects `prefers-reduced-motion`.
 ## Picture credits
 
 Photographs from Wikimedia Commons: Brocken Inaglory (CC BY-SA 3.0), James St. John (CC BY 2.0), GraceKelly (CC BY-SA 3.0), Ra'ike / Lanzi (CC BY-SA 3.0), Gerda Arendt (CC0). Linked in the page footer.
+
+## Licence
+
+The code is MIT-licensed (see `LICENSE`). The photographs keep their own licences, listed above.
