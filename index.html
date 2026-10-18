@@ -13,7 +13,8 @@
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --bg:#0a1417; --surface:#101f24; --ink:#e8e6e0; --muted:#9aadb3; --accent:#e08b2c; --accent-ink:#0a1417;
@@ -104,7 +105,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 /* motion */
 @media (prefers-reduced-motion:no-preference){
-  .js .hero .bar,.js .hero .okaz,.js .hero h1,.js .hero .lede,.js .hero .small{opacity:0;animation:in 1100ms var(--ease) forwards}
+  .js .hero .bar,.js .hero .lede,.js .hero .small{opacity:0;animation:in 1100ms var(--ease) forwards}
+  .js .hero .okaz,.js .hero h1{animation:lift 1100ms var(--ease) both}
+  @keyframes lift{from{transform:translateY(22px)}to{transform:none}}
   .js .hero .okaz{animation-delay:200ms}.js .hero .small{animation-delay:500ms}.js .hero h1{animation-delay:650ms}.js .hero .lede{animation-delay:780ms}.js .hero .bar{animation-delay:100ms}
   @keyframes in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   .small img{animation:xfade 21s infinite}
